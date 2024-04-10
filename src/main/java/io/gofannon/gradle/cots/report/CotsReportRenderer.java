@@ -30,21 +30,19 @@ import java.util.List;
 
 @NonNullApi
 public class CotsReportRenderer extends TextReportRenderer implements DependencyReportRenderer {
-
+    private final ReportFormatter formatter;
     private final DependencyCollector dependencyCollector;
-
     private DependencyGraphsParser dependencyGraphParser;
 
-    public CotsReportRenderer(DependencyCollector dependencyCollector) {
+    public CotsReportRenderer(DependencyCollector dependencyCollector, ReportFormatter formatter) {
         this.dependencyCollector = dependencyCollector;
+        this.formatter = formatter;
     }
 
     @Override
     public void startProject(ProjectDetails project) {
-        getTextOutput().println("---------------------------------");
-        getTextOutput().println("--- " + project.getDisplayName());
-        getTextOutput().println("---------------------------------");
-
+        this.formatter.setOutput(getTextOutput());
+        formatter.printProjectHeader(project);
         dependencyGraphParser = new DependencyGraphsParser(dependencyCollector);
     }
 
@@ -88,18 +86,7 @@ public class CotsReportRenderer extends TextReportRenderer implements Dependency
 
     @Override
     public void complete() {
-        getTextOutput().println("--- COTS configurations");
-        for (var configurationName : dependencyCollector.getConfigurationList()) {
-            getTextOutput().println(configurationName);
-        }
-
-        getTextOutput().println();
-
-        getTextOutput().println("--- COTS dependencies");
-        List<String> dependencyList = dependencyCollector.getDependencyIdList();
-        dependencyList.sort(String::compareTo);
-        for (var dependencyId : dependencyList) {
-            getTextOutput().println(dependencyId);
-        }
+        formatter.printConfigurations(dependencyCollector.getConfigurationList());
+        formatter.printDependencies(dependencyCollector.getDependencyIdList());
     }
 }
