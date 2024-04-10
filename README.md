@@ -42,6 +42,8 @@ plugins {
     id("io.gofannon.cots-report") version ("0.1.0-SNAPSHOT")
 }
 ```
+
+
 ### Extension usage
 The plugin provides the `cotsReport` extension.
 This extension contains 3 properties:
@@ -49,7 +51,10 @@ This extension contains 3 properties:
 * **configurations** which contains the list of the configurations to parse. This property is optional. By default, the configuration is `runtimeClasspath`.
 * **ignorableGroupIds** which contains the list of the groups to ignore. This property is optional. By default, there is no ignorable group.
 
-Example:
+
+### Examples:
+
+__Groovy__
 ```groovy
 cotsReporting {
     reportFile = layout.buildDirectory.file("my-report.txt")
@@ -58,8 +63,19 @@ cotsReporting {
 }
 ```
 
+__Kotlin__
+```kotlin
+cotsReporting {
+    reportFile = layout.buildDirectory.file("sample.txt")
+    configurations.set(listOf("runtimeClasspath","testRuntimeClasspath"))
+    ignorableGroupIds.set(listOf("commons-io", "com.fasterxml.jackson.module", "jackson-module-kotlin"))
+}
+```
+
+
 ## Run
 To run the plugin, just execute the task 
+
 ```shell
 gradle :cotsReport
 ```

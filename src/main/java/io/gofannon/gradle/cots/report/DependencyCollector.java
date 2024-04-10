@@ -32,8 +32,8 @@ public class DependencyCollector implements DependencyVisitor {
 
     private final DependencyCollectorConfiguration configuration;
 
-    private final SortedSet<String> dependencyIdSet  = new TreeSet<>();
-    private final SortedSet<String> configurationNameSet  = new TreeSet<>();
+    private final SortedSet<String> dependencyIdSet = new TreeSet<>();
+    private final SortedSet<String> configurationNameSet = new TreeSet<>();
 
 
     /**
@@ -42,9 +42,8 @@ public class DependencyCollector implements DependencyVisitor {
      * @param configuration all information to select the dependencies to collect
      */
     public DependencyCollector(DependencyCollectorConfiguration configuration) {
-this.configuration = configuration;
+        this.configuration = configuration;
     }
-
 
 
     /**

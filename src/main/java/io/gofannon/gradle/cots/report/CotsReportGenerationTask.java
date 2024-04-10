@@ -45,7 +45,8 @@ public abstract class CotsReportGenerationTask extends AbstractDependencyReportT
     private void initializeReportRenderer(CotsReportExtension extension) {
         CotsContext context = createContext(extension);
         DependencyCollector dependencyCollector = new DependencyCollector(context);
-        DependencyReportRenderer reportRenderer = new CotsReportRenderer(dependencyCollector);
+        ReportFormatter formatter = new TextReportFormatter();
+        DependencyReportRenderer reportRenderer = new CotsReportRenderer(dependencyCollector, formatter);
         setRenderer(reportRenderer);
     }
 
