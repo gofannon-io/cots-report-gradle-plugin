@@ -34,15 +34,12 @@ dependencies {
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 
     testImplementation("org.codehaus.groovy:groovy:3.0.21")
-    //testImplementation("commons-io:commons-io:2.16.0")
 
-    testImplementation(platform("org.junit:junit-bom:5.10.1"))
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
     testImplementation(gradleTestKit())
-    //testImplementation(testFixtures("org.gradle:gradle-core:8.4"))
-    //testImplementation("org.gradle:gradle-test-kit:8.4")
 }
 
 tasks.withType<KotlinCompile> {
