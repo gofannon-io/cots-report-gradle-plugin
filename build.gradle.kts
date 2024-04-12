@@ -6,6 +6,7 @@ plugins {
     `java-library`
     `maven-publish`
     groovy
+    id("com.gradle.plugin-publish") version "1.2.1"
 }
 
 
@@ -13,10 +14,16 @@ group = "io.gofannon.gradle"
 
 
 gradlePlugin {
+    website.set("https://github.com/gofannon-io/cots-report-gradle-plugin")
+    vcsUrl.set("https://github.com/gofannon-io/cots-report-gradle-plugin")
+
     plugins {
         create("cotsReportPlugin") {
             id = "io.gofannon.cots-report"
             implementationClass = "io.gofannon.gradle.cots.report.CotsReportPlugin"
+            displayName = "Cots Report Plugin"
+            description = "Gradle plugin to generate reports of project's COTS (Commercial Off-The Shelve)"
+            tags.set(listOf("cots", "report", "dependency"))
         }
     }
 }
@@ -59,4 +66,14 @@ kotlin {
 
 tasks.withType<Wrapper> {
     gradleVersion = "8.4"
+}
+
+tasks.withType<Jar> {
+    from(".") {
+        include("LICENSE")
+        into("META-INF")
+    }
+    manifest {
+        attributes("License" to "Apache License 2.0")
+    }
 }
