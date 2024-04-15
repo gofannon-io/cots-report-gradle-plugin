@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.gofannon.gradle.cots.report;
+package xyz.gofannon.gradle.cots.report;
 
 import org.gradle.api.NonNullApi;
 import org.gradle.api.tasks.diagnostics.internal.ProjectDetails;

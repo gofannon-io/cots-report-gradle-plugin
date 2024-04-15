@@ -13,28 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.gofannon.gradle.cots.report;
 
-import org.gradle.api.tasks.diagnostics.internal.ConfigurationDetails;
-import org.gradle.api.tasks.diagnostics.internal.graph.nodes.RenderableDependency;
+package xyz.gofannon.gradle.cots.report
 
-/**
- * Visitor of dependency tree
- */
-public interface DependencyVisitor {
+import org.gradle.testfixtures.ProjectBuilder
+import spock.lang.Specification
 
-    /**
-     * Start visiting a configuration
-     *
-     * @param configuration the visited configuration
-     */
-    void visitConfiguration(ConfigurationDetails configuration);
+class CotsReportPluginTest extends Specification {
 
-    /**
-     * Visit a dependency
-     *
-     * @param dependency the visited dependency
-     */
-    void visitDependency(RenderableDependency dependency);
+    def "plugin shall be accessible"() {
+        given:
+        def project = ProjectBuilder.builder().build()
+        project.getPluginManager().apply("xyz.gofannon.cots-report")
+
+
+        expect:
+        project.getPluginManager().hasPlugin("xyz.gofannon.cots-report")
+        project.getTasks().named("cotsReport") != null
+    }
 
 }

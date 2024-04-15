@@ -31,7 +31,7 @@ __Java__
 ```groovy
 plugins {
 //  [...]
-    id 'io.gofannon.cots-report' version("0.1.0-SNAPSHOT")
+    id 'xyz.gofannon.cots-report' version("0.1.0-SNAPSHOT")
 }
 ```
 
@@ -39,7 +39,7 @@ __Kotlin__
 ```kotlin
 plugins {
 //  [...]
-    id("io.gofannon.cots-report") version ("0.1.0-SNAPSHOT")
+    id("xyz.gofannon.cots-report") version ("0.1.0-SNAPSHOT")
 }
 ```
 

@@ -13,10 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.gofannon.gradle.cots.report;
+package xyz.gofannon.gradle.cots.report;
+
+import org.gradle.api.tasks.diagnostics.internal.ConfigurationDetails;
+import org.gradle.api.tasks.diagnostics.internal.graph.nodes.RenderableDependency;
 
 /**
- * Context of COTS plugin execution
+ * Visitor of dependency tree
  */
-public interface CotsContext extends DependencyCollectorConfiguration{
+public interface DependencyVisitor {
+
+    /**
+     * Start visiting a configuration
+     *
+     * @param configuration the visited configuration
+     */
+    void visitConfiguration(ConfigurationDetails configuration);
+
+    /**
+     * Visit a dependency
+     *
+     * @param dependency the visited dependency
+     */
+    void visitDependency(RenderableDependency dependency);
+
 }

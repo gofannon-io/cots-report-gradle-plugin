@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package io.gofannon.gradle.cots.report
+package xyz.gofannon.gradle.cots.report
 
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
 import spock.lang.Specification
 import spock.lang.TempDir
 
-import static io.gofannon.gradle.cots.report.CotsReportHelper.*
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
+import static xyz.gofannon.gradle.cots.report.CotsReportHelper.*
 
 class BuildLogicFunctionalTest extends Specification {
 
@@ -36,7 +36,7 @@ class BuildLogicFunctionalTest extends Specification {
     private static String baseBuildGradle = """
             plugins {
                 id 'java'
-                id 'io.gofannon.cots-report' version("1.0.0-SNAPSHOT")
+                id 'xyz.gofannon.cots-report' version("1.0.0-SNAPSHOT")
             }
 
             dependencies {

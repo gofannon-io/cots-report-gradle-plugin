@@ -13,23 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package xyz.gofannon.gradle.cots.report;
 
-package io.gofannon.gradle.cots.report
-
-import org.gradle.testfixtures.ProjectBuilder
-import spock.lang.Specification
-
-class CotsReportPluginTest extends Specification {
-
-    def "plugin shall be accessible"() {
-        given:
-        def project = ProjectBuilder.builder().build()
-        project.getPluginManager().apply("io.gofannon.cots-report")
-
-
-        expect:
-        project.getPluginManager().hasPlugin("io.gofannon.cots-report")
-        project.getTasks().named("cotsReport") != null
-    }
-
+/**
+ * Context of COTS plugin execution
+ */
+public interface CotsContext extends DependencyCollectorConfiguration{
 }

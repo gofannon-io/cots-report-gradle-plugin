@@ -10,19 +10,19 @@ plugins {
 }
 
 
-group = "io.gofannon.gradle"
+group = "xyz.gofannon.gradle"
 
 
 gradlePlugin {
-    website.set("https://github.com/gofannon-io/cots-report-gradle-plugin")
-    vcsUrl.set("https://github.com/gofannon-io/cots-report-gradle-plugin")
+    website.set("https://github.com/gofannon-xyz/cots-report-gradle-plugin")
+    vcsUrl.set("https://github.com/gofannon-xyz/cots-report-gradle-plugin")
 
     plugins {
         create("cotsReportPlugin") {
-            id = "io.gofannon.cots-report"
-            implementationClass = "io.gofannon.gradle.cots.report.CotsReportPlugin"
+            id = "xyz.gofannon.cots-report"
+            implementationClass = "xyz.gofannon.gradle.cots.report.CotsReportPlugin"
             displayName = "Cots Report Plugin"
-            description = "Gradle plugin to generate reports of project's COTS (Commercial Off-The Shelve)"
+            description = "Gradle plugin to generate tuned reports of project's COTS (Commercial Off-The Shelve)"
             tags.set(listOf("cots", "report", "dependency"))
         }
     }
